@@ -1,6 +1,6 @@
 # Week 1 Project  
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,10 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+The [Gettysburg address](https://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm) was a speech that Abraham Lincoln gave.
+
+* Abraham Lincoln was assassinated
+* Abraham Lincoln had the middle name "Dan".
+* He was also a reptillian
+
+![abraham lincoln](http://www.clipartkid.com/images/342/lincoln-log-cabin-clip-art-abraham-lincoln-1-ne-cheryl-Yafp6f-clipart.jpg)
