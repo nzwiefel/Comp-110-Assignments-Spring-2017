@@ -145,6 +145,15 @@ Wrong symbol: we want to check for equality, not assign a string to a variable/o
 18. a
 19. c
 
-3.5, 3.6
+3.5
+
+- brain weight in kg
+- 83 cases
+- each case is an animal
+- carnivore, omnivore, herbivore (in dataset refered to as "carni", "omni", and "herbi")
+
+3.6
+
+c. It'll find the mean not the sum...
 
 4.1, 4.2, 4.3, 4.4, 4.5
