@@ -1,6 +1,6 @@
 # Week 2 Short Answer Questions
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,44 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+1.1.
+
+a) Taffy: value of var for specific case
+
+b) Year: quantitative (?)
+
+c) sex: categorical
+
+d) name: categorical
+
+e) count: quantitative
+
+1.2:
+
+The var "number of states" has mostly quantitative values - however, it also has a case with the value "it depends". Additionally, for the var "in office", the majority of cases have the format YYYY-YYYY, whereas one case has the value YYYY to YYYY thus breaking the format. If one wanted to get really picky, they could suggest that the "in office" variable be split up into two vars - "entered office" and "left office". Finally, the "president" variable has inconsistant formatting: the first case has Last, First format, whereas the other two have a First Last format.
+
+1.4
+
+1. 
+
+- variables in table A: year, algeria, brazil, columbia
+- vars in table b: country, y2000, y2001
+- vars in table c: country, year, value
+
+2. 
+
+- table a: a year
+- table b: a country
+- table c: a country in a year
+
+1.5
+
+1. It looks like there are 7.
+2. It looks like each case represents an airport
+3. faa, name, dst, tzone, tz, latlon are probably all categorical, while alt is likely quanitative.
+
+2.2, 2.3, 2.4, 2.6, 2.7, 2.8, 2.8, 2.9, 2.10
+
+3.1, 3.2, 3.3, 3.4, 3.5, 3.6
+
+4.1, 4.2, 4.3, 4.4, 4.5
