@@ -156,4 +156,62 @@ Wrong symbol: we want to check for equality, not assign a string to a variable/o
 
 c. It'll find the mean not the sum...
 
-4.1, 4.2, 4.3, 4.4, 4.5
+4.1:
+
+*one* -> italicized
+
+**two** -> bold
+
+* three -> bulleted list
+
+# Four -> header
+
+`five` -> outlined box
+
+## six -> slightly smaller header
+
+[seven](http://tiny.cc/dcf/index.html) ->link
+
+
+
+4.2
+
+a. wrong "ticks"
+b. wrong "ticks" - those are quotation marks
+c. only 2 ticks on the closing end
+d. this isn't inline r-markup: all the markup can't be placed on one line with this syntax.
+e. too many ticks on closing line.
+
+4.3
+
+### An Introduction
+
+Arithmetic is *easy*! For instance
+
+``` {r}
+3+2
+```
+
+4.4
+
+1. filepath and/or a url
+2. file path (I think if "/" inserted before ahab)
+3. neither.
+4. url
+5. both (if http added to beginning can be url)
+6. both
+
+4.5
+
+# Birds of the World
+## JJ Audubon
+
+[Source file](Birds.rmd)
+
+There are many species of birds in the world. From my studio, I can see
+
+* Blue Jays
+* Cardinals
+* Robins
+* Crows
+* Sparrows
