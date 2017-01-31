@@ -108,6 +108,43 @@ distance = miles
 - count
 - DEM = democratic, LIB = libertarian, REP = republican, UNA = unaffilated
 
-3.1, 3.2, 3.3, 3.4, 3.5, 3.6
+3.1
+
+1. fireplace <- fireplace %>% filter(on="YES")
+2. fireplace()
+3. warmth(fireplace="YES")
+4. fireplace + 5
+
+3.2:
+
+It's using chaining/ the %>% symbol incorrectly -> the syntax is wrong: there should be something for that command to apply the right side to the left side: instead it's simply being saved in an object.
+
+3.3:
+
+Wrong symbol: we want to check for equality, not assign a string to a variable/object.
+
+3.4:
+
+1. b
+2. a
+3. d
+4. d (kinda)
+5. a.
+6. c
+7. c
+8. a
+9. c
+10. a
+11. c
+12. a
+13. a
+14. c
+15. c
+16. a
+17. c
+18. a
+19. c
+
+3.5, 3.6
 
 4.1, 4.2, 4.3, 4.4, 4.5
