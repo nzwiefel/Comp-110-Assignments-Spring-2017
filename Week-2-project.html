@@ -124,9 +124,109 @@ $(document).ready(function () {
 <div id="noah-zwiefel" class="section level2">
 <h2>Noah Zwiefel</h2>
 <!-- leave this material as is -->
-<p>Compiled on Wed Feb 1 20:19:36 2017.</p>
+<p>Compiled on Sat Feb 11 11:41:29 2017.</p>
 <!-- put your content after this line -->
-<p>This file was downloaded from a link that our professor provided us with. It’s a record of books checked out at Macalester Library. <a href="http://tiny.cc/dcf/Library-small.rda">The data</a></p>
+<p>This file was downloaded from a link that our professor provided us with. It’s catalog enteries for Macalester Library’s collection. <a href="http://tiny.cc/dcf/Library-small.rda">The data</a></p>
+</div>
+<div id="basics" class="section level2">
+<h2>Basics</h2>
+<p>Let’s load the data.</p>
+<pre class="r"><code>load(&quot;Library-small.rda&quot;)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li></li>
+</ol>
+<p>Let’s look at the Inventory data set - the data set that represents the items in the Macalester Library collection - so that we can get a brief overview of what this data set consits of:</p>
+<pre class="r"><code>head(Inv)</code></pre>
+<pre><code>## Source: local data frame [6 x 18]
+## Groups: Item.Type [1]
+## 
+##   Shelving.Location Item.Type       Call.Number                 Author
+##               &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;                  &lt;chr&gt;
+## 1  Stacks - Level 3    VOLUME  HD9055 .B44 1989 Belasco, Warren James.
+## 2  Stacks - Level 3    VOLUME    HD31 .C53 1961     Churchman, C. West
+## 3  Stacks - Level 3    VOLUME PG3476.B2 A6 1993             Babelʹ, I.
+## 4  Stacks - Level 3    VOLUME JN30 .E94168 2010       Kaiser, Wolfram,
+## 5  Stacks - Level 4    VOLUME   B2929 .N67 1976        Norman, Richard
+## 6  Stacks - Level 3    VOLUME    N 7340 H7 1954          Hobson, R. L.
+## # ... with 14 more variables: Title.or.Description &lt;chr&gt;,
+## #   Textual.Holdings &lt;chr&gt;, Material.Format &lt;chr&gt;, OCLC.Number &lt;int&gt;,
+## #   ISBN &lt;chr&gt;, Item.Barcode &lt;chr&gt;, Cost &lt;chr&gt;, Current.Status &lt;chr&gt;,
+## #   Loan.Date.Due &lt;dttm&gt;, Issued.Count &lt;int&gt;, Issued.Count.YTD &lt;int&gt;,
+## #   Last.Issued.Date &lt;dttm&gt;, Last.Inventoried.Date &lt;dttm&gt;,
+## #   Item.Deleted.Date &lt;dttm&gt;</code></pre>
+<pre class="r"><code>names(Inv)</code></pre>
+<pre><code>##  [1] &quot;Shelving.Location&quot;     &quot;Item.Type&quot;            
+##  [3] &quot;Call.Number&quot;           &quot;Author&quot;               
+##  [5] &quot;Title.or.Description&quot;  &quot;Textual.Holdings&quot;     
+##  [7] &quot;Material.Format&quot;       &quot;OCLC.Number&quot;          
+##  [9] &quot;ISBN&quot;                  &quot;Item.Barcode&quot;         
+## [11] &quot;Cost&quot;                  &quot;Current.Status&quot;       
+## [13] &quot;Loan.Date.Due&quot;         &quot;Issued.Count&quot;         
+## [15] &quot;Issued.Count.YTD&quot;      &quot;Last.Issued.Date&quot;     
+## [17] &quot;Last.Inventoried.Date&quot; &quot;Item.Deleted.Date&quot;</code></pre>
+<p>Let’s look at the number of items in inventory</p>
+<pre class="r"><code>dim(Inv)</code></pre>
+<pre><code>## [1] 2000   18</code></pre>
+<p>2000 cases/books in inventory. It looks as if each case represents a book that the library has in invetory. Each case has relevent info on that book and it’s status in the library catalog (author info, isbn, where it’s located in the library, etc) included.</p>
+<p>Let’s look at now at the Bks object:</p>
+<pre class="r"><code>head(Bks)</code></pre>
+<pre><code>## # A tibble: 6 × 15
+##   OCLC.Number      Format                                         Subject
+##         &lt;int&gt;       &lt;chr&gt;                                           &lt;chr&gt;
+## 1        1179 Book, Print            Special Industries &amp; Trades, General
+## 2        9864 Book, Print                                History, General
+## 3       10413 Book, Print               Religions, Mythology, Rationalism
+## 4       10982 Book, Print                              English Literature
+## 5       11900 Book, Print             Print Media, Printmaking, Engraving
+## 6       23797 Book, Print History - Americas, General, Indian, N. America
+## # ... with 12 more variables: Title &lt;chr&gt;, Author &lt;chr&gt;,
+## #   Publication.Date &lt;int&gt;, Edition &lt;chr&gt;, Publisher &lt;chr&gt;, ISBN &lt;chr&gt;,
+## #   Language &lt;chr&gt;, Physical.Description &lt;chr&gt;, Genre &lt;chr&gt;,
+## #   LC.Call.Number &lt;chr&gt;, Dewey.Call.Number &lt;chr&gt;, Local.Call.Number &lt;chr&gt;</code></pre>
+<pre class="r"><code>names(Bks)</code></pre>
+<pre><code>##  [1] &quot;OCLC.Number&quot;          &quot;Format&quot;               &quot;Subject&quot;             
+##  [4] &quot;Title&quot;                &quot;Author&quot;               &quot;Publication.Date&quot;    
+##  [7] &quot;Edition&quot;              &quot;Publisher&quot;            &quot;ISBN&quot;                
+## [10] &quot;Language&quot;             &quot;Physical.Description&quot; &quot;Genre&quot;               
+## [13] &quot;LC.Call.Number&quot;       &quot;Dewey.Call.Number&quot;    &quot;Local.Call.Number&quot;</code></pre>
+<pre class="r"><code>dim(Bks)</code></pre>
+<pre><code>## [1] 3765   15</code></pre>
+<p>Each case appears to represent a book, and includes various variables that would correspond with this (e.g. ISBN, Author, Format, Subject). I’m not entirely certain what the data set as a whole represents, but if I was forced to make a guess, given the fact that it has 3 different call numbers included, perhaps it has something to do with inter library loans/books that the library doesn’t actually own.</p>
+<ol start="5" style="list-style-type: decimal">
+<li></li>
+</ol>
+<p>Let’s tally the number of books by status, as listed in the library catalog.</p>
+<pre class="r"><code>Inv %&gt;%
+  group_by(Current.Status) %&gt;%
+  tally()</code></pre>
+<pre><code>## # A tibble: 4 × 2
+##   Current.Status     n
+##            &lt;chr&gt; &lt;int&gt;
+## 1      AVAILABLE  1866
+## 2        MISSING     1
+## 3        ON_LOAN    18
+## 4      WITHDRAWN   115</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li></li>
+</ol>
+<pre class="r"><code>Inv %&gt;%
+  group_by(Issued.Count) %&gt;%
+  tally()</code></pre>
+<pre><code>## # A tibble: 46 × 2
+##    Issued.Count     n
+##           &lt;int&gt; &lt;int&gt;
+## 1             0   996
+## 2             1   337
+## 3             2   203
+## 4             3   121
+## 5             4    69
+## 6             5    46
+## 7             6    38
+## 8             7    29
+## 9             8    24
+## 10            9    20
+## # ... with 36 more rows</code></pre>
+<p>This looks like it groups the items by the number of times they’ve been checked out, and then prints out a total count for how many items are in each group of times checked out. As we can see, it looks like 996 items have never been checked out.</p>
 </div>
 </div>
 

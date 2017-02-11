@@ -10,5 +10,62 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-This file was downloaded from a link that our professor provided us with. It's a record of books checked out at Macalester Library. [The data](http://tiny.cc/dcf/Library-small.rda)
+This file was downloaded from a link that our professor provided us with. It's catalog enteries for Macalester Library's collection. [The data](http://tiny.cc/dcf/Library-small.rda)
 
+## Basics
+
+Let's load the data.
+
+``` {r}
+load("Library-small.rda")
+```
+
+4. 
+
+Let's look at the Inventory data set - the data set that represents the items in the Macalester Library collection - so that we can get a brief overview of what this data set consits of:
+
+``` {r}
+
+head(Inv)
+names(Inv)
+```
+
+Let's look at the number of items in inventory
+
+``` {r}
+dim(Inv)
+```
+
+2000 cases/books in inventory. It looks as if each case represents a book that the library has in invetory. Each case has relevent info on that book and it's status in the library catalog (author info, isbn, where it's located in the library, etc) included.
+
+
+Let's look at now at the Bks object:
+
+``` {r}
+head(Bks)
+names(Bks)
+dim(Bks)
+
+```
+
+Each case appears to represent a book, and includes various variables that would correspond with this (e.g. ISBN, Author, Format, Subject). I'm not entirely certain what the data set as a whole represents, but if I was forced to make a guess, given the fact that it has 3 different call numbers included, perhaps it has something to do with inter library loans/books that the library doesn't actually own.
+
+5. 
+
+Let's tally the number of books by status, as listed in the library catalog.  
+
+``` {r}
+Inv %>%
+  group_by(Current.Status) %>%
+  tally()
+
+```
+
+6. 
+``` {r}
+Inv %>%
+  group_by(Issued.Count) %>%
+  tally()
+```
+
+This looks like it groups the items by the number of times they've been checked out, and then prints out a total count for how many items are in each group of times checked out. As we can see, it looks like 996 items have never been checked out. 
