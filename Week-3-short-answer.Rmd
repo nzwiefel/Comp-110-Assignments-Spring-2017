@@ -1,6 +1,6 @@
 # Week 3 Short Answer Questions
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,20 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+5.1.
+
+``` {r}
+library(mosaicData)
+library(DataComputing)
+ggplot(data=CPS85,aes(x=sex,y=wage ,fill=married))+geom_bar(stat='identity',position='dodge', width=.9)+ facet_wrap(~race,ncol=3) 
+```
+
+5.2.
+
+``` {r}
+HappinessIndex %>%
+WorldMap(key="country",fill="corruption")
+```
+
+6.5, 6.6, 6.7, 6.8
+7.1, 7.4, 7.5, 7.7, 7.11, 7.12
