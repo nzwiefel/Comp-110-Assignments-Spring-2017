@@ -25,5 +25,63 @@ HappinessIndex %>%
 WorldMap(key="country",fill="corruption")
 ```
 
-6.5, 6.6, 6.7, 6.8
-7.1, 7.4, 7.5, 7.7, 7.11, 7.12
+6.5:
+
+b.
+
+6.6
+
+d.
+
+6.7:
+
+a.
+
+6.8:
+
+
+``` {r}
+Small <-
+  NCHS %>%
+  sample_n(size=5000)
+
+ggplot(data=Small,aes(x=bmi,y=weight))+geom_point()+aes(colour=smoker)
+```
+
+7.1.
+
+a. mean()
+b.  summarise(var1 = var2/var3, na.rm=TRUE)
+c. order()?
+d. filter()
+e. filter() (also subset())
+f. summarise()
+
+
+7.4.
+
+a.quotation marks around "first" are unnesc.
+b.the ref to "Tmp" in summarise is unnesc, given that we're piping data in
+c. missing the %>%/pipe between the commands. Won't get the expected results.
+
+7.5.
+
+7.7. 
+
+7.11.
+
+a. the total # of patients of each sex, along with the mean age 
+b. the total # of patients for each diagnosis, and mean age
+c. a count for each combination of sex + diagnosis, along with mean age 
+d. count for patients grouped by age and diagnosis + mean age 
+e. count for patients of each age group + mean age
+
+
+7.12.
+
+1. dim()
+2. names()
+3.help()
+4.library()
+5.
+6.
