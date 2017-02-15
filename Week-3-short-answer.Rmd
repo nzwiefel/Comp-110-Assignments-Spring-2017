@@ -52,8 +52,8 @@ ggplot(data=Small,aes(x=bmi,y=weight))+geom_point()+aes(colour=smoker)
 
 a. mean()
 b.  summarise(var1 = var2/var3, na.rm=TRUE)
-c. order()?
-d. filter()
+c. group_by()
+d. filter()/subset()
 e. filter() (also subset())
 f. summarise()
 
@@ -66,7 +66,34 @@ c. missing the %>%/pipe between the commands. Won't get the expected results.
 
 7.5.
 
+a. group_by(sex,count)
+
+b. subset(sex==F)
+
+c. subset(sex==M)
+
+d. summarise(total=sum(count))
+
+e. subset(select=c(name, count))
 7.7. 
+
+a. Looks like the first argument in group_by and summarise functions are unnesc. -> the dataset is already being passed to these functions through the piping. Also the "new" dataset/frame isn't being assigned to anything.
+
+BabyNames %>% group_by(BabyNames, year, sex) %>% summarise(BabyNames,total=sum(count))
+
+b. There's no dataset being passed to any of these functions; thus there will be no data for these functions to work their magic on.
+
+ZipGeography %>% group_by(state) %>% summarise(pop=sum(Population))
+
+
+c. the symbol "->" is nonsensical, and i'm not entirely certain why it's beign used in this context. Should be using 
+
+Minneapolis2013 %>% group_by(First) %>% summarise(voteReceived=n())
+
+d. Minneapolis2013 %>% group_by(First) %>% summarise(votesReceived = n()) 
+
+I'm not really sure what's going on with the first version of this function: it seems quite incorrect. This is probably the closest we can get to a correct (syntexically) version of this command without knowing what he intended to do.
+
 
 7.11.
 
@@ -83,5 +110,5 @@ e. count for patients of each age group + mean age
 2. names()
 3.help()
 4.library()
-5.
-6.
+5.group_by()
+6.summarise()
