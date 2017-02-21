@@ -1,6 +1,6 @@
 # Week 3 Project
 
-## Your name should appear here! 
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,99 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+``` {r}
+
+ggplot(data = CPS85, aes(x = exper, y = wage, color = married)) + geom_point() + facet_wrap( ~ sector)
+
+ggplot(data = NCHS, aes(x = bmi)) + geom_density(aes(color = sex,fill=TRUE)) + facet_wrap(~ pregnant)
+```
+
+## Diamonds
+
+1. 
+Which color diamonds seem to be largest on average (in terms of carats)?
+
+
+
+``` {r}
+diamonds %>% 
+  group_by(color) %>% 
+  summarise(avg_carat_size=mean(carat)) %>% 
+  arrange(desc(avg_carat_size)) %>% 
+  head( 1 )
+```
+
+2. 
+Which clarity of diamonds has the largest average “table” per carat?
+
+``` {r}
+diamonds %>% 
+  group_by(clarity) %>% 
+  summarise(avg_table_size=mean(table)) %>% 
+  arrange(desc(avg_table_size)) %>% 
+  head( 1 )
+```
+
+## Vote
+
+1. 
+
+How many cases are there?
+
+
+``` {r}
+dim(Minneapolis2013)
+```
+
+2. 
+Who were the top 5 candidates in the Second vote selections.
+
+``` {r}
+Minneapolis2013 %>% 
+  group_by(Second) %>% 
+  tally() %>% 
+  arrange(desc(n)) %>%
+  head()
+```
+
+3.
+
+How many ballots are marked “undervote” in
+- First choice selections?
+- Second choice selections?
+- Third choice selections?
+
+``` {r}
+Minneapolis2013 %>%
+  subset(First == "undervote") %>%
+  tally()
+Minneapolis2013 %>%
+  subset(Second == "undervote") %>%
+  tally()
+Minneapolis2013 %>%
+  subset(Third == "undervote") %>%
+  tally()
+
+```
+
+4.
+
+``` {r}
+Minneapolis2013 %>%
+  subset(First=="BETSY HODGES") %>%
+  group_by(Second) %>% 
+  tally() %>% 
+  arrange(desc(n)) %>%
+  head()
+```
+
+Looks like it's Mark Andrew.
+
+5.
+
+``` {r}
+Minneapolis2013 %>%
+  group_by(Precinct) %>%
+  summarise(percentage=base::mean(First=="undervote")) %>%
+  head()
+```

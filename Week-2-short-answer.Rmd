@@ -14,7 +14,7 @@ library(DataComputing)
 
 a) Taffy: value of var for specific case
 
-b) Year: quantitative (?)
+b) Year: categorical
 
 c) sex: categorical
 
@@ -42,9 +42,9 @@ The var "number of states" has mostly quantitative values - however, it also has
 
 1.5
 
-1. It looks like there are 7.
+1. It looks like there are 8.
 2. It looks like each case represents an airport
-3. faa, name, dst, tzone, tz, latlon are probably all categorical, while alt is likely quanitative.
+3. faa, name, dst, tzone, tz, lat, lon are probably all categorical, while alt is likely quanitative.
 
 2.2.
 
@@ -110,7 +110,7 @@ distance = miles
 
 3.1
 
-1. fireplace <- fireplace %>% filter(on="YES")
+1. fireplace <- fireplace %>% filter(on=="YES")
 2. fireplace()
 3. warmth(fireplace="YES")
 4. fireplace + 5
@@ -138,7 +138,7 @@ Wrong symbol: we want to check for equality, not assign a string to a variable/o
 11. c
 12. a
 13. a
-14. c
+14. d.
 15. c
 16. a
 17. c
