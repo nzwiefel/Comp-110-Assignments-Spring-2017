@@ -104,5 +104,8 @@ Looks like it's Mark Andrew.
 Minneapolis2013 %>%
   group_by(Precinct) %>%
   summarise(percentage=base::mean(First=="undervote")) %>%
+  arrange(desc(percentage)) %>%
   head()
 ```
+
+looks like P-6C has the highest % of precincts that had first=="undervote"
