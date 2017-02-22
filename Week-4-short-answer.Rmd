@@ -1,6 +1,6 @@
 # Week 4 Short Answer Questions
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,69 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+8.1.
+
+a. 2
+b. 2
+c. 1
+d. 5
+e. 3
+f. 4.
+g. 2.
+h. 5
+
+8.2:
+
+1.
+ggplot(CPS85, aes(x=age,y=wage)) + geom_point(aes(shape=married)) + facet_wrap( ~sector)
+2.
+ggplot(CPS85, aes(x=age,y=wage)) + geom_point() + facet_wrap(married ~ sex)
+
+8.3
+
+a. 
+
+ggplot(CPS85, aes(x=age,y=wage)) + geom_point()
+
+b.
+
+ggplot(CPS85, aes(x=age,y=wage)) + geom_point(aes(shape=sex))
+
+c.
+ggplot(CPS85, aes(x=age,y=wage)) + geom_point(aes(shape=sex)) + facet_wrap(~married)
+
+d.
+
+ggplot(CPS85, aes(x=age,y=wage)) + geom_point(aes(shape=married))
+
+
+
+9.1:
+
+a. data verb
+b. summary function
+c. transformation
+d. data verb
+e. transformation
+f. summary function
+g. summary function
+h. data_verb
+i. data_verb
+
+9.3
+
+1.
+
+diamonds %>% 
+  group_by(color) %>% 
+  summarise(avg_carat_size=mean(carat)) %>% 
+  arrange(desc(avg_carat_size)) %>% 
+  head( 1 )
+
+2.
+
+diamonds %>% 
+  group_by(clarity) %>% 
+  summarise(avg_table_size=mean(table)) %>% 
+  arrange(desc(avg_table_size)) %>% 
+  head( 1 )
