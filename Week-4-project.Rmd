@@ -62,3 +62,38 @@ ggplot(MyTwoYears, aes(x=date,y=birthcount,color=which_day_of_week)) + geom_poin
 ```
 
 Looks like babies don't like being born on the weekend: also many of the babies were born in late 1982/1983. Fewer in Jan/Feb of each year.
+
+5.
+
+``` {r}
+Holidays <- read.csv("http://tiny.cc/dcf/US-Holidays.csv") %>%
+  mutate(date = as.POSIXct(lubridate::dmy(date)))
+```
+
+6.
+
+1.
+
+``` {r}
+MyTwoYears <- Birthdays %>% filter(year(date) >= 1982, year(date) <= 1983)  %>% mutate(which_day_of_week=wday(date, label=TRUE)) %>% group_by(date) %>% mutate(birthcount=sum(births))
+HolidaysInTwoYears <- Holidays %>% filter(year(date) >= 1982, year(date) <= 1983) %>% mutate(which_day_of_week=wday(date, label=TRUE))
+ggplot(MyTwoYears, aes(x=date,y=birthcount,color=which_day_of_week)) + geom_point() + geom_vline(data=HolidaysInTwoYears,aes(xintercept=as.numeric(date),color=which_day_of_week))
+```
+
+2.
+
+```{r}
+MyTwoYears <- Birthdays %>% filter(year(date) >= 1982, year(date) <= 1983)  %>% mutate(which_day_of_week=wday(date, label=TRUE)) %>% group_by(date) %>% mutate(birthcount=sum(births))
+HolidaysInTwoYears <- Holidays %>% filter(year(date) >= 1982, year(date) <= 1983) %>% mutate(which_day_of_week=wday(date, label=TRUE))
+ggplot(MyTwoYears, aes(x=date,y=birthcount,color=which_day_of_week)) + geom_point() + geom_vline(data=HolidaysInTwoYears,aes(xintercept=as.numeric(date),color=which_day_of_week)) +
+    geom_text(data=HolidaysInTwoYears, aes(x=date, y=10000,label=holiday, angle=80))
+```
+
+7.
+
+``` {r}
+MyTwoYears <- MyTwoYears %>% mutate(is_holiday=date %in% Holidays$date)
+ggplot(MyTwoYears, aes(x=date,y=birthcount,color=which_day_of_week,shape=is_holiday, size=is_holiday)) + geom_point()
+```
+
+As you can see, there were less babies born on weekends than weekdays, and less babies born on major holidays vs other days, generally.
