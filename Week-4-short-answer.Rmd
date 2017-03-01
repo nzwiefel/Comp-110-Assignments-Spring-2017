@@ -49,15 +49,15 @@ ggplot(CPS85, aes(x=age,y=wage)) + geom_point(aes(shape=married))
 
 9.1:
 
-a. data verb
-b. summary function
-c. transformation
-d. data verb
-e. transformation
+a. I'd guess transformation: transforms into str() type. or quick presentation.
+b. data verb (table in->table out)
+c. data verb (table in->table out)
+d. reduction verb (not an option in this list, but that's what it is...)
+e. data verb (table in->table out)
 f. summary function
 g. summary function
 h. data_verb
-i. data_verb
+i. reduction verb/quick presentation? prints out data in console..
 
 9.3
 
