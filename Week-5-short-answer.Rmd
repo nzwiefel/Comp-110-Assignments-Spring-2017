@@ -1,6 +1,6 @@
 # Week 5 Short Answer Questions
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,21 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+10.1
+
+Because it wouldn't make sense. You need to have a second table in order to join two tables together - if you pipe a table into a function, how do you plan to refer to the second table without including it in the function?
+
+10.2, 
+
+The big reason is that there are some cases in countryCentroids that don't have a matching case in the same position as in demographics - that is, if you copied and pasted lat and long from country centroids into demographics, Akrortiri in the demographics table would have the lat and long of Aland from the CountryCentroids table.
+
+10.3
+
+1.
+I'm not sure if this is the answer that the author is looking for, but it sure seems like the easiest thing to do wouuld be create a new case in table B that finds the change between those two variables - using mutate or the like.
+
+2. 
+either table b or table c: leaning towards table b. they can simply join those tables together and then create a new variable that sums up the value of y2000 and y2001. 
+
+
+11.1, 11.3, 11.4, 11.5
