@@ -27,4 +27,36 @@ I'm not sure if this is the answer that the author is looking for, but it sure s
 either table b or table c: leaning towards table b. they can simply join those tables together and then create a new variable that sums up the value of y2000 and y2001. 
 
 
-11.1, 11.3, 11.4, 11.5
+11.1
+
+a. v1: the numbers of babies with a specific gender and year were assigned a specific name
+
+v2: the number of babies in a year with a specific name 
+
+v3: the number of babies with a specific name of specific genders
+
+b. v2 is wider than v1: v2 has count by genders included in each case, whereas v1 has the counts seperated by sex and year.
+
+c. The key variable seems to be name.
+
+d. Because there are some cases that arise when gathering the cases where there are no cases that match all of the conditions (i.e. there were for example, no cases of a female being named harrison in 1912, so rstudio put an NA there).
+
+e. Same case as d: there are no cases of a female being named Roderick in either 2012 or 1912 - it makes little sense, then, for r-studio to include a case for such. 
+
+f. year
+
+g. vars from two gathered? sex
+key var missing in v2? nbabies
+values from v2 to use as levels in key var create for v1: not sure what this question means/unclear question, but i'd assume the number under the sex column/category in v2
+
+11.3:
+
+a. A is wider than C,
+
+b. B is wider than C
+
+c. A is wider than C (I think there's a typo in this book bcus that's the same question as question A.)
+
+11.4:
+
+did on paper.
