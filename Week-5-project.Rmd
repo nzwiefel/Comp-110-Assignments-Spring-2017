@@ -1,6 +1,6 @@
 # Week 5 Project
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,72 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+
+
+Let's begin by loading stock mkt data:
+
+``` {r}
+companies <- c("VZ", "S", "T")
+Prices <- 
+  read_stock_prices(companies, what="daily",
+                  start_year=2000, end_year=2015) 
+```
+
+1. Buy/sell profit:
+
+Let's create a new table that gives the dates and what actions were performed. 
+
+``` {r}
+actionBuy=c("buy")
+dateBuy=c("2006-01-03")
+ActionsBuy = data.frame(actionBuy,dateBuy)
+actionSell=c("sell")
+dateSell = c("2014-12-30")
+ActionsSell = data.frame(actionSell,dateSell)
+
+```
+
+Let's combine the tables:
+
+``` {r}
+Prices$date = as.Date(Prices$date)
+ActionsBuy$date = as.Date(ActionsBuy$date)
+ActionsSell$date = as.Date(ActionsSell$date)
+Prices_buy <- Prices %>% inner_join(ActionsBuy,by=c(date="date"))
+Prices_sell <- Prices %>% inner_join(ActionsSell,by=c(date="date"))
+Prices_merged <- Prices_sell %>% inner_join(Prices_buy,by=c(company="company"))
+```
+
+next let's find the profit that was made:
+
+``` {r}
+profits <- Prices_merged %>% mutate(profit=close.x-close.y,percent=(close.x-close.y)/(close.x)) %>% select(company,profit,percent)
+head(profits)
+```
+
+Indexing prices
+
+```{r}
+ref_date <- ymd("2005-01-03")
+Reference <-
+  Prices %>% 
+  filter(date==ref_date) %>%
+  select(company, standard=close)
+standardized <- Prices %>% inner_join(Reference,by=c(company="company"))
+standardized <- standardized %>% mutate(indexed=(close/standard))
+ggplot(data=standardized,aes(x=date,y=indexed,colour=company)) + geom_line()
+```
+
+Dividends:
+
+``` {R}
+Dividends <-  read_stock_prices(companies, what="dividends") %>% filter(as.Date(date) <= ActionsSell$date & as.Date(date) >= ActionsBuy$date)
+DividendsAndStocks <- Dividends %>% inner_join(Prices,by=c(company="company",date="date")) %>% mutate(div_that_they_want=dividends*close)
+head(DividendsAndStocks)
+#I think there's the typo in the instructions, because there's no way that they paid a dividend of $27 a share...I'm just going to disregard and move onto the next step independently
+DividendEarnings <- DividendsAndStocks %>% group_by(company) %>% summarise(total_dividend=sum(dividends))
+head(DividendEarnings)
+head(profits)
+```
+
+Looks like in most cases, earned more from holding stock, even if only marginally more - with the exception, of course, of Sprint, where you actually had net loses, even if dividend was positive.
