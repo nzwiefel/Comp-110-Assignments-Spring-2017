@@ -1,6 +1,6 @@
 # Week 6 Project
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,78 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+``` {r cache=TRUE}
+data_site <- 
+  "http://tiny.cc/dcf/2014-Q4-Trips-History-Data-Small.rds" 
+Trips <- readRDS(gzcon(url(data_site)))
+
+```
+
+1.
+
+``` {r}
+Trips %>% ggplot(aes(x=sdate)) + geom_density()
+```
+
+More people checked out bikes in Oct and Nov vs Dec and Jan.
+
+2.
+
+``` {r}
+Trips %>% 
+  mutate(time_of_day = 
+       lubridate::hour(sdate) + 
+         lubridate::minute(sdate) / 60) %>%
+ggplot(aes(x=time_of_day)) + geom_density()
+```
+
+Mostly checked out bikes in the am between 8-9, and pm between 4-7 or so.
+
+3.
+
+``` {r}
+Trips %>% 
+  mutate(time_of_day = 
+       lubridate::hour(sdate) + 
+         lubridate::minute(sdate) / 60) %>% mutate(day_of_week=lubridate::wday(sdate)) %>%
+ggplot(aes(x=time_of_day)) + geom_density() + facet_wrap( ~ day_of_week)
+
+```
+
+4.
+
+``` {r}
+Trips %>% 
+  mutate(time_of_day = 
+       lubridate::hour(sdate) + 
+         lubridate::minute(sdate) / 60) %>% mutate(day_of_week=lubridate::wday(sdate)) %>%
+ggplot(aes(x=time_of_day,fill=client)) + geom_density() + facet_wrap( ~ day_of_week)
+
+```
+
+5.
+
+``` {r}
+Trips %>% 
+  mutate(time_of_day = 
+       lubridate::hour(sdate) + 
+         lubridate::minute(sdate) / 60) %>% mutate(day_of_week=lubridate::wday(sdate)) %>%
+ggplot(aes(x=time_of_day,fill=client)) + geom_density(position = position_stack()) + facet_wrap( ~ day_of_week)
+
+```
+
+The second one - it's easier to see what's going on.
+
+6.
+
+``` {R}
+Trips %>% 
+  mutate(time_of_day = 
+       lubridate::hour(sdate) + 
+         lubridate::minute(sdate) / 60) %>% mutate(wday = ifelse(lubridate::wday(sdate) %in% c(1,7), "weekend", "weekday")) %>%
+    
+ggplot(aes(x=time_of_day,fill=client)) + geom_density(position = position_stack()) + facet_wrap( ~ wday)
+
+```
+
+I'd argue that it depends on what the objective is: if the objective is to see bike usage on weekday vs weekend, it makes more sense to facet by type of day. If objective is to see casual vs client usage: it makes more sense to facet it by who uses them.
