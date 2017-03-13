@@ -1,6 +1,6 @@
 # Week 6 Short Answer Questions
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,89 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+12.1
+
+BabyNames %>%
+  group_by(name) %>%
+  summarise(total=sum(count)) %>%
+  filter(rank(desc(total))<=5)
+
+12.2
+
+BabyNamesChg <- BabyNames %>%
+  group_by(year, name) %>%
+  summarise(total=sum(count)) %>%
+  filter(rank(desc(total))<=100) %>%
+  mutate(top_100 = TRUE)
+  
+BabyNamesChgOther <- BabyNames %>%
+  group_by(year, name) %>%
+  summarise(total=sum(count)) %>%
+  filter(rank(desc(total))>100) %>%
+  mutate(top_100 = FALSE)
+  
+BabyNameThing <- rbind(BabyNamesChg,BabyNamesChgOther)
+
+BabyNameThing2 <- BabyNameThing %>%
+  group_by(year, top_100) %>%
+  summarise(total_cases=sum(total))
+  
+GlyphReady <- BabyNameThing2 %>%
+  spread(top_100, total_cases) %>%
+  mutate(top_100 = 'TRUE' / ('TRUE' + 'FALSE'))
+
+GlyphReady %>% ggplot(aes(x=year,y=top_100)) + geom_point() + geom_smooth()
+
+12.3
+
+a. transformation
+b. transformation
+c. summary
+d. other fucntion
+e.other function
+f. summary + transformation function
+g. neither
+h. summary(?)
+
+13.1
+
+1. 18 verticies
+2. 9 edges
+
+13.2
+
+1. 4 verticies: A, B, C, D; A->C, A->b, C->D
+2. table 2
+3. table 1: shows B being connected to C (it's not...); table 3 doesn't even make sense...there's one with 3 items...
+
+13.3
+
+table 2
+
+
+
+13.4
+
+1. exports
+2. population
+
+14.1,
+
+``` {r}
+ggplot(data=mosaicData::CPS85,aes(x=sex,y=wage,color=sex)) + geom_boxplot()
+```
+14.3
+
+Women have heights (mostly) between 1.5-1.7; men have heights mostly between 1.6-1.9 or so.
+
+14.7,
+
+``` {R}
+ggplot(data=mosaicData::CPS85,aes(x=educ,y=wage,color=sex)) + geom_point(aes(alpha=.1)) + geom_smooth(method='lm')
+```
+
+14.10
+
+``` {r}
+ggplot(data=mosaicData::Galton,aes(x=height,color=sex)) + geom_density()
+```
