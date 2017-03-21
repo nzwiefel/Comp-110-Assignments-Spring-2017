@@ -30,4 +30,30 @@ g. as.numeric: no; tidyr function? yes.
 h. as.numeric: yes; tidyr function? yes.
 i. as.numeric: no; tidyr function? yes.
 
-16.1, 16.2, 16.3
+16.1:
+
+``` {R}
+BabyNames %>%
+  filter(grepl("[aeiou]$",name)) %>%
+  group_by(name) %>%
+  summarise(total=sum(count)) %>%
+  arrange(desc(total))
+```
+
+``` {r}
+BabyNames %>%
+  filter(grepl("(joe|jo)$",name)) %>%
+  group_by(name) %>%
+  summarise(total=sum(count)) %>%
+  arrange(desc(total))
+```
+
+16.2
+
+Looks like it matches a phone numbers that start with an area code with first digit between 2-9. All digits are being extracted.
+
+16.3
+
+1. 2 letters long
+2. A lot of strings! There are 19 initial letters that the string can have. I'm not going to count out how many different letter possibilities could match, because I feel as if that would be a waste of time and busy work.
+3. Possibly state/US territory codes.
