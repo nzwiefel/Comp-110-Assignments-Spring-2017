@@ -1,6 +1,6 @@
 # Week 7 Short Answer Questions
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,24 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+15.1
+
+- lubridate::ymd("1997-05-02") - lubridate::mdy("April 30, 1777")
+- lubridate::ymd("1997-05-02") - lubridate::mdy("06-23-1912")
+- lubridate::ymd("1997-05-02") - lubridate::dmy("3 March 1847")
+- lubridate::ymd("1997-05-02") - lubridate::mdy("Nov. 11th, 1918")
+- lubridate::ymd("1997-05-02") - lubridate::mdy("July 20, 1969")
+
+15.2
+
+a. as.numeric: no; tidyr function? yes.
+b. as.numeric: no; tidyr function? yes.
+c. as.numeric: no; tidyr function? no.
+d. as.numeric: no; tidyr function? yes.
+e. as.numeric: no; tidyr function? yes.
+f. as.numeric: no; tidyr function? yes.
+g. as.numeric: no; tidyr function? yes.
+h. as.numeric: yes; tidyr function? yes.
+i. as.numeric: no; tidyr function? yes.
+
+16.1, 16.2, 16.3
