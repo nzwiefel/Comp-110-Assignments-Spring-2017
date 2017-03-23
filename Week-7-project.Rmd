@@ -1,13 +1,37 @@
 # Week 7 Project
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
 
 ```{r include = FALSE}
 library(DataComputing)
+library(rvest)
+library(lubridate)
+
 ```
 <!-- put your content after this line -->
+This file isn't compiling: Dan Kaplan said to just submit...there seems to be some system wierdness going on...
 
-Here is my content!
+``` {r}
+page <- "http://en.wikipedia.org/wiki/List_of_nuclear_reactors"
+table_nodes <- page %>%
+  read_html() %>%
+  html_nodes("table")
+table_list <-
+  html_table(table_nodes[1:34], fill = TRUE)
+#View(table_list[[24]])
+table_japan <- table_list[[24]]
+table_japan_cleaned <- table_japan[-1, ]
+names(table_japan_cleaned) <- c("name","reactor_no","type","model","status","net_capacity","gross_capacity","construction_begin","op_start","closure")
+foo <- table_japan_cleaned %>%
+  mutate(x = lubridate::dmy(op_start))
+foo %>% 
+  ggplot(
+       aes(color=name,y=net_capacity,x=lubridate::dmy(op_start))) + 
+  geom_point()
+ggplot(table_japan_cleaned,aes(y=name,x=lubridate::dmy(construction_begin))) + geom_segment(xend=lubridate::dmy(op_start))
+
+```
+
