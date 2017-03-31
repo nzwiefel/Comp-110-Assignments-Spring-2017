@@ -1,6 +1,6 @@
 # Week 8 Short Answer Questions
 
-## Your name should appear here!
+## Noah Zwiefel
 
 <!-- leave this material as is -->
 Compiled on `r date()`.
@@ -10,4 +10,9 @@ library(DataComputing)
 ```
 <!-- put your content after this line -->
 
-Here is my content!
+17.2
+
+1. living_area, bathrooms, bedrooms, fireplaces,
+2. no
+3. 179796.647 - 151424.497 = 28372.15
+4. yes - but requires having a living area > 2816 sq ft
